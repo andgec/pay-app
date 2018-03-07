@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from _datetime import datetime
 from django.conf import settings
 
-class InvoiceJournal(models.Model):
+class PurchaseInvoiceJournal(models.Model):
     JANUARY     = 1
     FEBRUARY    = 2
     MARCH       = 3
@@ -42,6 +42,9 @@ class InvoiceJournal(models.Model):
                                  decimal_places=settings.DECIMAL_FIELD_DECIMAL_PLACES)
     attachment = models.FileField()
     
+    class Meta:
+        verbose_name_plural = _('Purchase Invoice Journal')
+    
     def __str__(self):
-        return str(self.year) + ' ' + str(self.MONTH_CHOICES[self.month - 1][1]) + ', kr.{:0,.2f}'.format(self.amount).replace('kr-','-kr')
+        return str(self.year) + ' ' + str(self.MONTH_CHOICES[self.month - 1][1]) + ', kr. {:0,.2f}'.format(self.amount).replace('kr-','-kr')
     

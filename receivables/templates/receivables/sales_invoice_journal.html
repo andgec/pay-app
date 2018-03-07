@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Sąskaitos už internetą</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/receivables">Sąskaitos už internetą</a></h1>
+        </div>
+        {% for journal_line in journal %}
+        	<div>
+        	<p>Periodas: {{ journal_line.invoice_period }}</p>
+        	<p>Sąskaitos suma: {{journal_line.amount}}</p>
+        	<p><b>Mokėti (pusė): {{journal_line.half_amount}}</b></p>
+        	<p>Sąskaita: {{journal_line.attachment}}</p>
+        	<p>--------------------------------------------------------------------------</p>
+        	</div>
+        {% endfor %}
+    </body>
+</html>

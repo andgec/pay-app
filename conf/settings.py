@@ -25,6 +25,8 @@ SECRET_KEY = 'de0zusfzxpp-=-+1**5=w629ug)3%cv3nc-m%0#tk1@e*r3=w*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+INTERNAL_IPS=['127.0.0.1']
+
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'shared',
+    'receivables',
     'payables'
 ]
 
@@ -48,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'pay_app.urls'
@@ -55,6 +61,7 @@ ROOT_URLCONF = 'pay_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -115,11 +122,14 @@ USE_L10N = True
 USE_TZ = True
 
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+print(MEDIA_ROOT)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = os.path.join(BASE_DIR, '/media/')
+MEDIA_URL = '/media/'
 
 
 # count up to 1 billion with 2 decimal places afterwards

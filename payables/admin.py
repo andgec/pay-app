@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import InvoiceJournal  
+from .models import PurchaseInvoiceJournal  
 
-admin.site.register(InvoiceJournal)
+admin.site.register(PurchaseInvoiceJournal)
